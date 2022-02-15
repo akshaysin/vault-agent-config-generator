@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "This is vault configuration generator script. It works for both init container and sidecar"
+
+function render_template {
+  eval "echo \"$(cat $1)\""
+}
+
+function generate_vault_agent_conf {
+  echo "#### Creating /home/vault/vault.cfg from template ./vault.cfg.tmpl"
+  render_template /script/vault.cfg.tmpl > /script/vault.cfg
+}
+
+generate_vault_agent_conf
